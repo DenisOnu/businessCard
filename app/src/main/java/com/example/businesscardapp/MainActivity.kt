@@ -67,18 +67,18 @@ fun BusinessCard() {
             Box(
 
                 modifier = Modifier
-                    .size(100.dp) // Set the size of the box
+                    .size(100.dp)
                     .background(
-                        color = Color.Black, // Set the box color to dark
+                        color = Color.Black, 
                     ),
-                contentAlignment = Alignment.Center // This centers the icon inside the box
+                contentAlignment = Alignment.Center 
             ) {
-                Image( // Replace with a vector asset or an image as per your card
+                Image( 
                     painter = painterResource(id = R.drawable.android_icon),
                     contentDescription = "Android Logo",
                     modifier = Modifier
-                        .size(100.dp) // Adjust the size as necessary
-                        .padding(bottom = 8.dp) // Adjust the padding as necessary
+                        .size(100.dp) 
+                        .padding(bottom = 8.dp) 
                 )
             }
             Text(
@@ -163,7 +163,6 @@ fun IconRow(icon: ImageVector, text: String, iconColor: Color = Color.Blue) {
 @Composable
 fun BusinessCardPreview() {
     BusinessCardAppTheme {
-//        Greeting("Android")
         BusinessCard()
     }
 }
