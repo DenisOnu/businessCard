@@ -27,6 +27,7 @@ import androidx.compose.material.icons.filled.Share
 import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.graphics.vector.ImageVector
 
 
 
@@ -36,8 +37,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             BusinessCardAppTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-//                    Greeting("Android")
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
                     BusinessCard()
                 }
             }
@@ -48,7 +51,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BusinessCard() {
     Card(
-        //backgroundColor = Color(0xFFA8D8B9), // Use the exact color from your card
         colors = CardDefaults.cardColors(containerColor = Color(0xFFA8D8B9)),
         modifier = Modifier
             .fillMaxWidth()
@@ -58,8 +60,6 @@ fun BusinessCard() {
                 .padding(16.dp)
                 .fillMaxWidth()
                 .padding(
-//                    horizontal = 16.dp,
-//                    vertical = 80.dp
                     top = 200.dp
                 ),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -85,42 +85,79 @@ fun BusinessCard() {
                 "Denis Onu",
                 style = MaterialTheme.typography.headlineLarge)
             Text(
-                "Android Developer Extraordinaire",
+                "Software (Android) Developer",
                 style = MaterialTheme.typography.bodyLarge.copy(color= Color.Blue)
             )
-            Spacer(modifier = Modifier.height(150.dp))
-            Row {
-                Icon(Icons.Default.Phone,
-                    contentDescription = "Phone",
-                    modifier = Modifier.size(24.dp),
-                )
-                Text(
-                    "+11 (123) 444 555 666",
-                    style = MaterialTheme.typography.bodyLarge.copy(
-                            fontSize = 14.sp // Adjust the font size as necessary
-                    ),
-                    modifier = Modifier.padding(start = 8.dp)
-                )
-            }
-            Spacer(modifier = Modifier.height(10.dp))
-            Row {
-                Icon(
-                    Icons.Filled.Share, contentDescription = "Twitter Handle")
-                Text("@AndroidDev")
-            }
-            Row {
-                Icon(Icons.Default.Email, contentDescription = "Email")
-                Text("jen.doe@android.com")
-            }
+            Spacer(modifier = Modifier.height(200.dp))
+//            Row {
+//                Icon(Icons.Default.Phone,
+//                    contentDescription = "Phone",
+//                    modifier = Modifier.size(24.dp),
+//                )
+//                Text(
+//                    "+1 (403)401 3333",
+//                    style = MaterialTheme.typography.bodyLarge.copy(
+//                            fontSize = 18.sp
+//                    ),
+//                    modifier = Modifier.padding(start = 18.dp)
+//                )
+//            }
+//            Spacer(modifier = Modifier.height(10.dp))
+//            Row {
+//                Icon(
+//                    Icons.Filled.Share,
+//                    contentDescription = "Social Handle",
+//                    modifier = Modifier.size(24.dp),
+//                )
+//                Text(
+//                    "@DenisOnu",
+//                    style = MaterialTheme.typography.bodyLarge.copy(
+//                        fontSize = 18.sp
+//                    ),
+//                    modifier = Modifier.padding(start = 18.dp)
+//                )
+//            }
+//            Spacer(modifier = Modifier.height(10.dp))
+//            Row {
+//                Icon(Icons.Default.Email,
+//                    contentDescription = "Email",
+//                    modifier = Modifier.size(24.dp),
+//                )
+//                Text(
+//                    "denisonu7@gmail.com",
+//                    style = MaterialTheme.typography.bodyLarge.copy(
+//                        fontSize = 18.sp // Adjust the font size as necessary
+//                    ),
+//                    modifier = Modifier.padding(start = 18.dp)
+//                )
+//            }
+            IconRow(icon = Icons.Default.Phone, text = "+1 (403)401 3333")
+            IconRow(icon = Icons.Filled.Share, text = "@DenisOnu")
+            IconRow(icon = Icons.Default.Email, text = "denisonu7@gmail.com")
         }
     }
 }
-//fun Greeting(name: String, modifier: Modifier = Modifier) {
-//    Text(
-//            text = "Hello $name!",
-//            modifier = modifier
-//    )
-//}
+
+@Composable
+fun IconRow(icon: ImageVector, text: String, iconColor: Color = Color.Blue) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.fillMaxWidth().padding(start = 80.dp)
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            modifier = Modifier.size(24.dp),
+            tint = iconColor
+        )
+        Spacer(modifier = Modifier.width(16.dp))
+        Text(
+            text,
+            style = MaterialTheme.typography.bodyLarge.copy(fontSize = 18.sp),
+            modifier = Modifier
+        )
+    }
+}
 
 @Preview(showBackground = true)
 @Composable
